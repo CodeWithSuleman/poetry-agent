@@ -4,6 +4,8 @@ from agents import Runner, SQLiteSession
 from connection import config
 from main import poetry_agent
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+import os
 
 class Message(BaseModel):
     message: str
@@ -35,3 +37,8 @@ async def chat(request: Message):
         session=session,
         )
     return {"response": result.final_output or "Sorry, I couldn't compose that."}
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  
+    uvicorn.run("server:app", host="0.0.0.0", port=port)
