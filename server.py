@@ -17,7 +17,7 @@ app = FastAPI()
 # CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://poetry-assistant-aazs.vercel.app/"], 
+    allow_origins=["https://poetry-assistant-aazs.vercel.app/","http://localhost:3000"], 
     
     allow_credentials=True,
     allow_methods=["*"],
